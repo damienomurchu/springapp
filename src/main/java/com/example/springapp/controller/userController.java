@@ -3,6 +3,7 @@ package com.example.springapp.controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import com.example.springapp.model.User;
 
 @RestController
 public class userController {
