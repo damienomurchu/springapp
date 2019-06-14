@@ -1,9 +1,23 @@
 package com.example.springapp.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="user")
 public class User {
+
+  @Column(nullable = false)
   private Long id;
+
+  @Column(nullable = false)
   private String name;
+
+  @Column(nullable = false)
   private String city;
+
+  @Column(nullable = false)
   private Long[] friends;
 
   public User(String name, String city) {
