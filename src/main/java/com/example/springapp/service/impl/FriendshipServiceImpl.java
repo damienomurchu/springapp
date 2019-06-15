@@ -1,6 +1,7 @@
 package com.example.springapp.service.impl;
 
 import com.example.springapp.controller.Friendship;
+import com.example.springapp.controller.Person;
 import com.example.springapp.repositories.FriendshipRepository;
 import com.example.springapp.service.FriendshipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +21,19 @@ public class FriendshipServiceImpl implements FriendshipService {
   }
 
   @Override
-  public List<Friendship> getFriends(String userId) {
+  public List<Person> getFriends(Long userId) {
     // TODO implement
     return null;
   }
 
   @Override
-  public List<Friendship> getFriendSuggestions(String userId) {
+  public List<Person> getFriendSuggestions(Long userId) {
     // TODO implement
     return null;
   }
 
   @Override
-  public List<Friendship> getFriendSuggestionsByLocation(String userId) {
+  public List<Person> getFriendSuggestionsByLocation(Long userId) {
     // TODO implement
     return null;
   }

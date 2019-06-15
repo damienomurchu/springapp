@@ -9,10 +9,10 @@ public interface FriendshipService {
 
   Friendship newFriendship(Friendship newFriendship);
 
-  List<Person> getFriends(String userId);
+  List<Person> getFriends(Long userId);
 
-  List<Person> getFriendSuggestions(String userId);
+  List<Person> getFriendSuggestions(Long userId);
 
-  List<Person> getFriendSuggestionsByLocation(String userId);
+  List<Person> getFriendSuggestionsByLocation(Long userId);
 
 }

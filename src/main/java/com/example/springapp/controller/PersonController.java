@@ -11,7 +11,7 @@ public class PersonController implements PersonService {
     private PersonService personService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/person/{userId}")
-    public Person getPerson(@PathVariable(value = "userId") String userId) {
+    public Person getPerson(@PathVariable(value = "userId") Long userId) {
         return personService.getPerson(userId);
     }
 

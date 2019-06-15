@@ -1,21 +1,20 @@
 package com.example.springapp.controller;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
 public class KeyEntity {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "PK", unique = true)
-  private String pk;
+  private Long id;
 
-  public String getPk() {
-    return pk;
+  public Long getPk() {
+    return id;
   }
 
-  public void setPk(String pk) {
-    this.pk = pk;
+  public void setPk(Long id) {
+    this.id = id;
   }
 }

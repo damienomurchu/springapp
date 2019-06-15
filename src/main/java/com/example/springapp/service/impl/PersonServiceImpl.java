@@ -12,13 +12,13 @@ public class PersonServiceImpl implements PersonService{
 
 
   @Override
-  public Person newPerson(Person newPerson) {
-    // TODO implement
-    return null;
+  public Person newPerson(Person person) {
+    Person newPerson = new Person(person.getName(), person.getCity());
+    return personRepository.save(newPerson);
   }
 
   @Override
-  public Person getPerson(String userId) {
+  public Person getPerson(Long userId) {
     // TODO implement
     return null;
   }
