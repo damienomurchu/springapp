@@ -1,15 +1,15 @@
 package com.example.springapp.controller;
 
+import com.example.springapp.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class PersonController {
+public class PersonController implements PersonService {
 
-    @RequestMapping(method = RequestMethod.POST, value = "/user")
-    public Person addUser(@RequestBody Person newPerson) {
+    @Override
+    public Person newPerson(Person newPerson) {
         // TODO implement
         return null;
     }
-
 
 }
