@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Person", schema = "springapp")
-public class User extends KeyEntity {
+public class Person extends KeyEntity {
 
   @Column(nullable = false)
   private String name;
@@ -17,12 +17,12 @@ public class User extends KeyEntity {
   @Column(nullable = false)
   private Long[] friends;
 
-  public User(String name, String city) {
+  public Person(String name, String city) {
     this.name = name;
     this.city = city;
   }
 
-  public User(String name, String city, Long[] friends) {
+  public Person(String name, String city, Long[] friends) {
     this.name = name;
     this.city = city;
     this.friends = friends;

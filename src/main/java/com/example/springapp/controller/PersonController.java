@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-public class userController {
+public class PersonController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/user")
-    public User addUser(@RequestBody User newUser) {
+    public Person addUser(@RequestBody Person newPerson) {
         // TODO implement
         return null;
     }
@@ -20,19 +20,19 @@ public class userController {
     }
 
     @RequestMapping("/user/{id}/friends")
-    public ArrayList<User> getFriends(@PathVariable(value = "id") Long userId) {
+    public ArrayList<Person> getFriends(@PathVariable(value = "id") Long userId) {
         // TODO implement
         return null;
     }
 
     @RequestMapping("/user/{id}/friend/suggestions")
-    public ArrayList<User> getFriendSuggestions(@PathVariable(value = "id") Long userId) {
+    public ArrayList<Person> getFriendSuggestions(@PathVariable(value = "id") Long userId) {
         // TODO implement
         return null;
     }
 
     @RequestMapping("/user/{id}/friend/suggestions/bylocation")
-    public ArrayList<User> getFriendSuggestionsByLocation(@PathVariable(value = "id") Long userId) {
+    public ArrayList<Person> getFriendSuggestionsByLocation(@PathVariable(value = "id") Long userId) {
         // TODO implement
         return null;
     }
