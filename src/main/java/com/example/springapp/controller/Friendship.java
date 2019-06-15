@@ -1,4 +1,4 @@
-package com.example.springapp.model;
+package com.example.springapp.controller;
 
 public class Friendship {
   private Long sourceUserId;
