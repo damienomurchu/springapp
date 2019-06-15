@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user", schema = "springapp")
+@Table(name="Person", schema = "springapp")
 public class User extends KeyEntity {
 
   @Column(nullable = false)
