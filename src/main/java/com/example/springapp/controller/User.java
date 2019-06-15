@@ -5,11 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user")
-public class User {
-
-  @Column(nullable = false)
-  private Long id;
+@Table(name="user", schema = "springapp")
+public class User extends KeyEntity {
 
   @Column(nullable = false)
   private String name;
@@ -25,19 +22,10 @@ public class User {
     this.city = city;
   }
 
-  public User(Long id, String name, String city, Long[] friends) {
-    this.id = id;
+  public User(String name, String city, Long[] friends) {
     this.name = name;
     this.city = city;
     this.friends = friends;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
   }
 
   public String getName() {
