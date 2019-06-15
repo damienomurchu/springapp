@@ -10,8 +10,15 @@ public class PersonServiceImpl implements PersonService{
   @Autowired
   private PersonRepository personRepository;
 
+
   @Override
   public Person newPerson(Person newPerson) {
+    // TODO implement
+    return null;
+  }
+
+  @Override
+  public Person getPerson(String userId) {
     // TODO implement
     return null;
   }

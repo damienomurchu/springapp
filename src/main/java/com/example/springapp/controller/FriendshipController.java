@@ -13,20 +13,20 @@ public class FriendshipController {
         return null;
     }
 
-    @RequestMapping("/user/{id}/friends")
-    public ArrayList<Person> getFriends(@PathVariable(value = "id") Long userId) {
+    @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}")
+    public ArrayList<Person> getFriends(@PathVariable(value = "userId") String userId) {
         // TODO implement
         return null;
     }
 
-    @RequestMapping("/user/{id}/friend/suggestions")
-    public ArrayList<Person> getFriendSuggestions(@PathVariable(value = "id") Long userId) {
+    @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}/suggestions")
+    public ArrayList<Person> getFriendSuggestions(@PathVariable(value = "userId") String userId) {
         // TODO implement
         return null;
     }
 
-    @RequestMapping("/user/{id}/friend/suggestions/bylocation")
-    public ArrayList<Person> getFriendSuggestionsByLocation(@PathVariable(value = "id") Long userId) {
+    @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}/suggestions/bylocation")
+    public ArrayList<Person> getFriendSuggestionsByLocation(@PathVariable(value = "userId") String userId) {
         // TODO implement
         return null;
     }

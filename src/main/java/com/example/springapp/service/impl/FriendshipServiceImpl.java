@@ -20,19 +20,19 @@ public class FriendshipServiceImpl implements FriendshipService {
   }
 
   @Override
-  public List<Friendship> getFriends(Long userId) {
+  public List<Friendship> getFriends(String userId) {
     // TODO implement
     return null;
   }
 
   @Override
-  public List<Friendship> getFriendSuggestions(Long userId) {
+  public List<Friendship> getFriendSuggestions(String userId) {
     // TODO implement
     return null;
   }
 
   @Override
-  public List<Friendship> getFriendSuggestionsByLocation(Long userId) {
+  public List<Friendship> getFriendSuggestionsByLocation(String userId) {
     // TODO implement
     return null;
   }

@@ -6,4 +6,6 @@ public interface PersonService {
 
   Person newPerson(Person newPerson);
 
+  Person getPerson(String userId);
+
 }

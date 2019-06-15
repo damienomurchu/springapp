@@ -8,10 +8,10 @@ public interface FriendshipService {
 
   Friendship newFriendship(Friendship newFriendship);
 
-  List<Friendship> getFriends(Long userId);
+  List<Friendship> getFriends(String userId);
 
-  List<Friendship> getFriendSuggestions(Long userId);
+  List<Friendship> getFriendSuggestions(String userId);
 
-  List<Friendship> getFriendSuggestionsByLocation(Long userId);
+  List<Friendship> getFriendSuggestionsByLocation(String userId);
 
 }
