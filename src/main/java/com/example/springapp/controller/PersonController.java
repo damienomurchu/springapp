@@ -4,6 +4,8 @@ import com.example.springapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 public class PersonController implements PersonService {
 
@@ -11,7 +13,7 @@ public class PersonController implements PersonService {
     private PersonService personService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/person/{userId}")
-    public Person getPerson(@PathVariable(value = "userId") Long userId) {
+    public Optional<Person> getPerson(@PathVariable(value = "userId") Long userId) {
         return personService.getPerson(userId);
     }
 
