@@ -1,7 +1,17 @@
 package com.example.springapp.controller;
 
-public class Friendship {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Friendship", schema = "springapp")
+public class Friendship extends KeyEntity {
+
+  @Column(nullable = false)
   private Long sourceUserId;
+
+  @Column(nullable = false)
   private Long targetUserId;
 
   public Friendship(Long sourceUserId, Long targetUserId) {
