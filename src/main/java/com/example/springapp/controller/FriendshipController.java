@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 public class FriendshipController {
@@ -19,7 +20,7 @@ public class FriendshipController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}")
     public ArrayList<Person> getFriends(@PathVariable(value = "userId") Long userId) {
-        return (ArrayList<Person>) friendshipService.getFriends(userId);
+        return friendshipService.getFriends(userId);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}/suggestions")

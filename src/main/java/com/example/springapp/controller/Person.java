@@ -14,7 +14,7 @@ public class Person extends KeyEntity {
   @Column(nullable = false)
   private String city;
 
-  @Column(nullable = false)
+  @Column(nullable = true)
   private Long[] friends;
 
   public Person(String name, String city) {

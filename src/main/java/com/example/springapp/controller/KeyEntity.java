@@ -10,11 +10,11 @@ public class KeyEntity {
   @Column(name = "PK", unique = true)
   private Long id;
 
-  public Long getPk() {
+  public Long getId() {
     return id;
   }
 
-  public void setPk(Long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 }

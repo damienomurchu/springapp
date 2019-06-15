@@ -3,16 +3,19 @@ package com.example.springapp.service;
 import com.example.springapp.controller.Friendship;
 import com.example.springapp.controller.Person;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public interface FriendshipService {
 
   Friendship newFriendship(Friendship newFriendship);
 
-  List<Person> getFriends(Long userId);
+  ArrayList<Person> getFriends(Long userId);
 
-  List<Person> getFriendSuggestions(Long userId);
+  ArrayList<Person> getFriendSuggestions(Long userId);
 
-  List<Person> getFriendSuggestionsByLocation(Long userId);
+  Map<String, ArrayList<Person>> getFriendSuggestionsByLocation(Long userId);
 
 }
