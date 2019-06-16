@@ -6,6 +6,8 @@ import com.example.springapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Implementation to PersonService to handle Person-related operations
  */
@@ -35,10 +37,17 @@ public class PersonServiceImpl implements PersonService {
    * Fetches a Person by their ID
    *
    * @param userId ID of Person to fetch
-   * @return Person that matches ID
+   * @return Person that matches ID or
    */
   @Override
-  public Person getPerson(Long userId) {
-    return personRepository.findById(userId).orElseGet(null);
+  public Optional<Person> getPerson(Long userId) {
+//    Person foundPerson = personRepository.findById(userId).orElseGet(null);
+//    if (foundPerson == null) {
+//      return new Person();
+//    }
+//    return foundPerson;
+
+    Optional<Person> foundPerson = personRepository.findById(userId);
+    return foundPerson;
   }
 }

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 import static com.example.springapp.utils.ValidationHelper.isValidIdValue;
 import static com.example.springapp.utils.ValidationHelper.isValidString;
 
@@ -35,8 +37,12 @@ public class PersonController {
     if (!isValidIdValue(userId)) {
       return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
     }
-    Person foundPerson = personService.getPerson(userId);
-    return new ResponseEntity(foundPerson, null, HttpStatus.OK);
+    Optional<Person> foundPerson = personService.getPerson(userId);
+    if (foundPerson.isPresent()) {
+      return new ResponseEntity(foundPerson, null, HttpStatus.OK);
+    }
+    return new ResponseEntity(null, null, HttpStatus.NOT_FOUND);
+
   }
 
   /**
