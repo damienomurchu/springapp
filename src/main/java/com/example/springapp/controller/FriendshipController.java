@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-import static com.example.springapp.utils.ValidationHelper.isValidLong;
+import static com.example.springapp.utils.ValidationHelper.isValidIdValue;
 
 /**
  * Controller to handle incoming friendship-related requests
@@ -36,8 +36,10 @@ public class FriendshipController {
       @PathVariable(value = "userId") Long userId,
       @PathVariable(value = "friendId") Long friendId) {
 
+    // TODO re-implement to be able to retrieve Long ID values from POST body
+
     // handle bad, malformed, and absent fields in input
-    if (!isValidLong(userId) || !isValidLong(friendId)) {
+    if (!isValidIdValue(userId) || !isValidIdValue(friendId)) {
       return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
     }
 
@@ -54,8 +56,14 @@ public class FriendshipController {
    * @return List of friends
    */
   @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}")
-  public ArrayList<Person> getFriends(@PathVariable(value = "userId") Long userId) {
-    return friendshipService.getFriends(userId);
+  public ResponseEntity<ArrayList<Person>> getFriends(@PathVariable(value = "userId") Long userId) {
+    // handle invalid Id values
+    if (!isValidIdValue(userId)) {
+      return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
+    }
+    ArrayList<Person> friends = friendshipService.getFriends(userId);
+    return new ResponseEntity(friends, null, HttpStatus.OK);
+
   }
 
   /**
@@ -65,8 +73,13 @@ public class FriendshipController {
    * @return List of suggested friends
    */
   @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}/suggestions")
-  public ArrayList<Person> getFriendSuggestions(@PathVariable(value = "userId") Long userId) {
-    return (ArrayList<Person>) friendshipService.getFriendSuggestions(userId);
+  public ResponseEntity<ArrayList<Person>> getFriendSuggestions(@PathVariable(value = "userId") Long userId) {
+    if (!isValidIdValue(userId)) {
+      return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
+    }
+    ArrayList<Person> friendSuggestions =(ArrayList<Person>) friendshipService.getFriendSuggestions(userId);
+    return new ResponseEntity(friendSuggestions, null, HttpStatus.OK);
+
   }
 
   /**
@@ -76,8 +89,12 @@ public class FriendshipController {
    * @return Map of suggested friends with location as the key
    */
   @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}/suggestions/bylocation")
-  public ArrayList<Person> getFriendSuggestionsByLocation(@PathVariable(value = "userId") Long userId) {
-    return (ArrayList<Person>) friendshipService.getFriendSuggestionsByLocation(userId);
+  public ResponseEntity<ArrayList<Person>> getFriendSuggestionsByLocation(@PathVariable(value = "userId") Long userId) {
+    if (!isValidIdValue(userId)) {
+      return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
+    }
+    ArrayList<Person> friendSuggestionsByLocation = (ArrayList<Person>) friendshipService.getFriendSuggestionsByLocation(userId);
+    return new ResponseEntity(friendSuggestionsByLocation, null, HttpStatus.OK);
   }
 
 

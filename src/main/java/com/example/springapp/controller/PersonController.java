@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static com.example.springapp.utils.ValidationHelper.isValidIdValue;
 import static com.example.springapp.utils.ValidationHelper.isValidString;
 
 /**
@@ -28,9 +29,14 @@ public class PersonController {
    * @return person that was retrieved
    */
   @RequestMapping(method = RequestMethod.GET, value = "/person/{userId}")
-  public Person getPerson(@PathVariable(value = "userId") Long userId) {
-    // TODO handle cases where null
-    return personService.getPerson(userId);
+  public ResponseEntity<Person> getPerson(@PathVariable(value = "userId") Long userId) {
+
+    // handle invalid Id values
+    if (!isValidIdValue(userId)) {
+      return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
+    }
+    Person foundPerson = personService.getPerson(userId);
+    return new ResponseEntity(foundPerson, null, HttpStatus.OK);
   }
 
   /**

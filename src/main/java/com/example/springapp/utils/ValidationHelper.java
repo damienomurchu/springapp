@@ -18,7 +18,7 @@ public class ValidationHelper {
     return true;
   }
 
-  static public boolean isValidLong(Long longInput) {
+  static public boolean isValidIdValue(Long longInput) {
     if (longInput < 1 || longInput == null) {
       return false;
     }
