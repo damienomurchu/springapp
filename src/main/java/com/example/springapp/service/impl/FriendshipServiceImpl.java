@@ -74,23 +74,23 @@ public class FriendshipServiceImpl implements FriendshipService {
    * @param userId ID if user you want to retrieve friend IDs for
    * @return List of IDs of all friends of a person
    */
-  private List<Long> getFriendIds(List<Friendship> friendships, Long userId) {
-    List<Long> friendIds = new ArrayList<Long>();
-
-    // check list of friendships for your friendships
-    for (Friendship friendship : friendships) {
-      // add friendId if you're the source of the friendship
-      if (friendship.getSourceUserId() == userId) {
-        friendIds.add(friendship.getTargetUserId());
-      }
-      // add friendId if you're the target of the friendship
-      if (friendship.getTargetUserId() == userId) {
-        friendIds.add(friendship.getSourceUserId());
-      }
-    }
-
-    return friendIds;
-  }
+//  private List<Long> getFriendIds(List<Friendship> friendships, Long userId) {
+//    List<Long> friendIds = new ArrayList<Long>();
+//
+//    // check list of friendships for your friendships
+//    for (Friendship friendship : friendships) {
+//      // add friendId if you're the source of the friendship
+//      if (friendship.getSourceUserId() == userId) {
+//        friendIds.add(friendship.getTargetUserId());
+//      }
+//      // add friendId if you're the target of the friendship
+//      if (friendship.getTargetUserId() == userId) {
+//        friendIds.add(friendship.getSourceUserId());
+//      }
+//    }
+//
+//    return friendIds;
+//  }
 
   /**
    * Helper to return the full Person object(s) for a list of given person IDs
@@ -111,6 +111,34 @@ public class FriendshipServiceImpl implements FriendshipService {
   }
 
   /**
+   * Helper to fetch all IDs of a users friends
+   *
+   * @param userId ID of user to find their friends
+   * @return List of their friends IDs
+   */
+  private ArrayList<Long> getFriendsIds(Long userId) {
+    // fetch all friendships
+    List<Friendship> friendships = getAllFriendships();
+
+    // fetch ids of your friends
+    ArrayList<Long> friendIds = new ArrayList<Long>();
+
+    // check list of friendships for your friendships
+    for (Friendship friendship : friendships) {
+      // add friendId if you're the source of the friendship
+      if (friendship.getSourceUserId() == userId) {
+        friendIds.add(friendship.getTargetUserId());
+      }
+      // add friendId if you're the target of the friendship
+      if (friendship.getTargetUserId() == userId) {
+        friendIds.add(friendship.getSourceUserId());
+      }
+    }
+
+    return friendIds;
+  }
+
+  /**
    * Fetch all friends for a specific user
    *
    * @param userId ID of Person to get friends for
@@ -119,11 +147,8 @@ public class FriendshipServiceImpl implements FriendshipService {
   @Override
   public ArrayList<Person> getFriends(Long userId) {
 
-    // fetch all friendships
-    List<Friendship> friendships = getAllFriendships();
-
-    // fetch ids of your friends
-    List<Long> friendIds = getFriendIds(friendships, userId);
+    // fetch the IDs of all users friends
+    List<Long> friendIds = getFriendsIds(userId);
 
     // fetch friends from their ids
     ArrayList<Person> friends = getPersonsById(friendIds);
@@ -146,7 +171,8 @@ public class FriendshipServiceImpl implements FriendshipService {
     // get their friends
     ArrayList<Long> suggestedFriendIds = new ArrayList<>();
     for (Person friend : friends) {
-      suggestedFriendIds.add(friend.getId());
+      ArrayList<Long> friendsFriends = getFriendsIds(friend.getId());
+      suggestedFriendIds.addAll(friendsFriends);
     }
 
     // ensure suggestions don't contain any dupes or the originating user
