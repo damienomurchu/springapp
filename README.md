@@ -28,7 +28,7 @@ To connect via a different configuration to your mysql instance simply update th
 
 ## Running Application
 
-Bring up a development version of the server with:
+To bring up a development version of the server with:
 
 ```
 # if you have `make` installed
@@ -38,6 +38,18 @@ make dev-server
 mvn spring-boot:run -Dspring.profiles.active=dev
 ```
 
+If you do not wish to start a development version of the server, you can start the server as normal with:
+
+```
+# if you have `make` installed
+make start-server
+  
+# if you don't have `make` installed
+mvn spring-boot:run
+```
+
+*Note:* This application has not been configured for non-development purposes and you may need to update the `application.properties` file to meet your needs.
+
 ## Documentation
 
 ### Javadoc
@@ -46,4 +58,9 @@ Generated javadoc documentation for the codebase is hosted [here](https://damien
 
 ### API documentation
 
-API documentation provided via SwaggerUI is coming!  
+API documentation is provided via Swagger-UI. 
+
+To access the Swagger API docs:
+
+- start the application as documented above.
+- navigate to `<base-url>/swagger-ui.html` in a browser, for example `localhost:8080/swagger-ui.html`.
