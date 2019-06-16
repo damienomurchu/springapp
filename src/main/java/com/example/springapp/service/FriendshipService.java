@@ -21,24 +21,40 @@ public interface FriendshipService {
   boolean isFriend(Long userId, Long friendId);
 
   /**
+   * Method to create a new Friendship
+   *
    * @param newFriendship Friendship to create
-   * @return
+   * @return new Friendship created
    */
   Friendship newFriendship(Friendship newFriendship);
 
   /**
+   * Method to get friends of a person
+   *
    * @param userId ID of Person to get friends for
    * @return List of friends
    */
   ArrayList<Person> getFriends(Long userId);
 
   /**
+   * Method to get IDs of friends of a person
+   *
+   * @param userId ID of person to fetch friends
+   * @return List of IDs of friends
+   */
+  ArrayList<Long> getFriendsIds(Long userId);
+
+  /**
+   * Method to get list of suggested friends for a user
+   *
    * @param userId ID of Person to get friend suggestions for
    * @return List of suggested friends
    */
   ArrayList<Person> getFriendSuggestions(Long userId);
 
   /**
+   * Method to get list of suggested friends for a user, mapped by location
+   *
    * @param userId ID of Person to get friend suggestions for
    * @return Suggested friends mapped by location
    */

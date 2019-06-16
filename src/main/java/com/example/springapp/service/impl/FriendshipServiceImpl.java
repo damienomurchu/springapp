@@ -68,31 +68,6 @@ public class FriendshipServiceImpl implements FriendshipService {
   }
 
   /**
-   * Helper to get all IDs of your friends from a list of friendships
-   *
-   * @param friendships List of friendships
-   * @param userId ID if user you want to retrieve friend IDs for
-   * @return List of IDs of all friends of a person
-   */
-//  private List<Long> getFriendIds(List<Friendship> friendships, Long userId) {
-//    List<Long> friendIds = new ArrayList<Long>();
-//
-//    // check list of friendships for your friendships
-//    for (Friendship friendship : friendships) {
-//      // add friendId if you're the source of the friendship
-//      if (friendship.getSourceUserId() == userId) {
-//        friendIds.add(friendship.getTargetUserId());
-//      }
-//      // add friendId if you're the target of the friendship
-//      if (friendship.getTargetUserId() == userId) {
-//        friendIds.add(friendship.getSourceUserId());
-//      }
-//    }
-//
-//    return friendIds;
-//  }
-
-  /**
    * Helper to return the full Person object(s) for a list of given person IDs
    *
    * @param PersonIds List of person IDs
@@ -111,12 +86,12 @@ public class FriendshipServiceImpl implements FriendshipService {
   }
 
   /**
-   * Helper to fetch all IDs of a users friends
+   * Fetches all IDs of a users friends
    *
    * @param userId ID of user to find their friends
    * @return List of their friends IDs
    */
-  private ArrayList<Long> getFriendsIds(Long userId) {
+  public ArrayList<Long> getFriendsIds(Long userId) {
     // fetch all friendships
     List<Friendship> friendships = getAllFriendships();
 

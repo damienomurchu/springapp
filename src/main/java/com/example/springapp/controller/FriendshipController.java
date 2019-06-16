@@ -20,7 +20,7 @@ import static com.example.springapp.utils.ValidationHelper.isValidIdValue;
 public class FriendshipController {
 
   /**
-   * FriendshipService to handle Person-related operations
+   * FriendshipService to handle Friendship-related operations
    */
   @Autowired
   private FriendshipService friendshipService;

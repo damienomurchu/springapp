@@ -2,10 +2,12 @@ package com.example.springapp.service.impl;
 
 import com.example.springapp.model.Person;
 import com.example.springapp.repository.PersonRepository;
+import com.example.springapp.service.FriendshipService;
 import com.example.springapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -19,6 +21,12 @@ public class PersonServiceImpl implements PersonService {
    */
   @Autowired
   private PersonRepository personRepository;
+
+  /**
+   * FriendshipService to handle Friendship-related operations
+   */
+  @Autowired
+  private FriendshipService friendshipService;
 
 
   /**
@@ -40,14 +48,17 @@ public class PersonServiceImpl implements PersonService {
    * @return Person that matches ID or
    */
   @Override
-  public Optional<Person> getPerson(Long userId) {
-//    Person foundPerson = personRepository.findById(userId).orElseGet(null);
-//    if (foundPerson == null) {
-//      return new Person();
-//    }
-//    return foundPerson;
-
+  public Person getPerson(Long userId) {
     Optional<Person> foundPerson = personRepository.findById(userId);
-    return foundPerson;
+    if (foundPerson.isPresent()) {
+      Person nonNullUser = foundPerson.get();
+      ArrayList<Long> friends = friendshipService.getFriendsIds(userId);
+      Long[] friendIds = new Long[friends.size()];
+      friendIds = friends.toArray(friendIds);
+      nonNullUser.setFriends(friendIds);
+      return nonNullUser;
+    }
+
+    return null;
   }
 }

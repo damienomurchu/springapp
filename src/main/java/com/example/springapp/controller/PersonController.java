@@ -37,8 +37,8 @@ public class PersonController {
     if (!isValidIdValue(userId)) {
       return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
     }
-    Optional<Person> foundPerson = personService.getPerson(userId);
-    if (foundPerson.isPresent()) {
+    Person foundPerson = personService.getPerson(userId);
+    if (foundPerson != null) {
       return new ResponseEntity(foundPerson, null, HttpStatus.OK);
     }
     return new ResponseEntity(null, null, HttpStatus.NOT_FOUND);

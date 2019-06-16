@@ -19,6 +19,6 @@ public interface PersonService {
    * @param userId ID of Person to fetch
    * @return Person that matches ID
    */
-  Optional<Person> getPerson(Long userId);
+  Person getPerson(Long userId);
 
 }
