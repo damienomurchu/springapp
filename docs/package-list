@@ -4,3 +4,4 @@ com.example.springapp.model
 com.example.springapp.repository
 com.example.springapp.service
 com.example.springapp.service.impl
+com.example.springapp.utils
