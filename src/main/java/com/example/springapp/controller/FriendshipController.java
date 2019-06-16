@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import static com.example.springapp.utils.ValidationHelper.isValidIdValue;
 
@@ -92,11 +93,11 @@ public class FriendshipController {
    * @return Map of suggested friends with location as the key
    */
   @RequestMapping(method = RequestMethod.GET, value = "/friendship/{userId}/suggestions/bylocation")
-  public ResponseEntity<ArrayList<Person>> getFriendSuggestionsByLocation(@PathVariable(value = "userId") Long userId) {
+  public ResponseEntity<Map<String, ArrayList<Person>>> getFriendSuggestionsByLocation(@PathVariable(value = "userId") Long userId) {
     if (!isValidIdValue(userId)) {
       return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
     }
-    ArrayList<Person> friendSuggestionsByLocation = (ArrayList<Person>) friendshipService.getFriendSuggestionsByLocation(userId);
+    Map<String, ArrayList<Person>> friendSuggestionsByLocation = friendshipService.getFriendSuggestionsByLocation(userId);
     return new ResponseEntity(friendSuggestionsByLocation, null, HttpStatus.OK);
   }
 
