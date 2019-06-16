@@ -31,6 +31,13 @@ public class Person extends KeyModel {
 
   /**
    * Creates a new Person
+   */
+  public Person() {
+    super();
+  }
+
+  /**
+   * Creates a new Person
    *
    * @param name Name of person
    * @param city City of person

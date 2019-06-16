@@ -25,6 +25,13 @@ public class Friendship extends KeyModel {
 
   /**
    * Creates a new Friendship
+   */
+  public Friendship() {
+    super();
+  }
+
+  /**
+   * Creates a new Friendship
    *
    * @param sourceUserId ID of friending user
    * @param targetUserId ID of user being friended
