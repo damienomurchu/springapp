@@ -3,13 +3,14 @@ package com.example.springapp.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Friendship model to represent a friendship in our system
  */
 @Entity
 @Table(name = "Friendship", schema = "springapp")
-public class Friendship extends KeyModel {
+public class Friendship extends KeyModel implements Serializable {
 
   /**
    * Id of the source user that initiated the friendship

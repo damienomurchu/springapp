@@ -4,9 +4,13 @@ import com.example.springapp.model.Friendship;
 import com.example.springapp.model.Person;
 import com.example.springapp.service.FriendshipService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+
+import static com.example.springapp.utils.ValidationHelper.isValidLong;
 
 /**
  * Controller to handle incoming friendship-related requests
@@ -23,12 +27,23 @@ public class FriendshipController {
   /**
    * Creates a new Friendship in system
    *
-   * @param newFriendship Friendship to create
+   * @param friendship Friendship to create
    * @return friendship that was created
    */
   @RequestMapping(method = RequestMethod.POST, value = "/friendship")
-  public Friendship newFriendship(@RequestBody Friendship newFriendship) {
-    return friendshipService.newFriendship(newFriendship);
+  public ResponseEntity<Friendship> newFriendship(@RequestBody Friendship friendship) {
+    Long sourceUserId = (Long) friendship.getSourceUserId();
+    Long targetUserId = (Long) friendship.getTargetUserId();
+
+    // handle bad, malformed, and absent fields in input
+    if (!isValidLong(sourceUserId) || !isValidLong(targetUserId)) {
+      return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    Friendship newFriendship = new Friendship(sourceUserId, targetUserId);
+    Friendship createdFriend = friendshipService.newFriendship(newFriendship);
+    return new ResponseEntity(createdFriend, null, HttpStatus.CREATED);
+
   }
 
   /**
