@@ -9,6 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+/**
+ * Entry point to Springapp API
+ */
 @SpringBootApplication
 @ComponentScan({"com.example.springapp.controller", "com.example.springapp.service"})
 @EntityScan("com.example.springapp.model")
