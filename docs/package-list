@@ -1,0 +1,6 @@
+com.example.springapp
+com.example.springapp.controller
+com.example.springapp.model
+com.example.springapp.repository
+com.example.springapp.service
+com.example.springapp.service.impl
