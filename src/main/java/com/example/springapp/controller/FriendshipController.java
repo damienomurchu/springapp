@@ -27,20 +27,21 @@ public class FriendshipController {
   /**
    * Creates a new Friendship in system
    *
-   * @param friendship Friendship to create
+   * @param userId id of person initiating friendship
+   * @param friendId id of person being friended
    * @return friendship that was created
    */
-  @RequestMapping(method = RequestMethod.POST, value = "/friendship")
-  public ResponseEntity<Friendship> newFriendship(@RequestBody Friendship friendship) {
-    Long sourceUserId = (Long) friendship.getSourceUserId();
-    Long targetUserId = (Long) friendship.getTargetUserId();
+  @RequestMapping(method = RequestMethod.POST, value = "/friendship/{userId}/{friendId}")
+  public ResponseEntity<Friendship> newFriendship(
+      @PathVariable(value = "userId") Long userId,
+      @PathVariable(value = "friendId") Long friendId) {
 
     // handle bad, malformed, and absent fields in input
-    if (!isValidLong(sourceUserId) || !isValidLong(targetUserId)) {
+    if (!isValidLong(userId) || !isValidLong(friendId)) {
       return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
     }
 
-    Friendship newFriendship = new Friendship(sourceUserId, targetUserId);
+    Friendship newFriendship = new Friendship(userId, friendId);
     Friendship createdFriend = friendshipService.newFriendship(newFriendship);
     return new ResponseEntity(createdFriend, null, HttpStatus.CREATED);
 
