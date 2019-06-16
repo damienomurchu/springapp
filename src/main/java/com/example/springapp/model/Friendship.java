@@ -1,12 +1,12 @@
-package com.example.springapp.controller;
+package com.example.springapp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Friendship", schema = "springapp")
-public class Friendship extends KeyEntity {
+@Table(name = "Friendship", schema = "springapp")
+public class Friendship extends KeyModel {
 
   @Column(nullable = false)
   private Long sourceUserId;

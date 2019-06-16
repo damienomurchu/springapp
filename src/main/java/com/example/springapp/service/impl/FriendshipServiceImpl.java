@@ -1,14 +1,16 @@
 package com.example.springapp.service.impl;
 
-import com.example.springapp.controller.Friendship;
-import com.example.springapp.controller.Person;
-import com.example.springapp.repositories.FriendshipRepository;
-import com.example.springapp.repositories.PersonRepository;
+import com.example.springapp.model.Friendship;
+import com.example.springapp.model.Person;
+import com.example.springapp.repository.FriendshipRepository;
+import com.example.springapp.repository.PersonRepository;
 import com.example.springapp.service.FriendshipService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service("friendshipService")
 public class FriendshipServiceImpl implements FriendshipService {
 
   @Autowired

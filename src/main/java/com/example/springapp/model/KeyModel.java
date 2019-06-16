@@ -1,13 +1,13 @@
-package com.example.springapp.controller;
+package com.example.springapp.model;
 
 import javax.persistence.*;
 
 @MappedSuperclass
-public class KeyEntity {
+public class KeyModel {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  @Column(name = "PK", unique = true)
+  @Column(name = "id", unique = true)
   private Long id;
 
   public Long getId() {

@@ -1,12 +1,10 @@
 package com.example.springapp.service;
 
-import com.example.springapp.controller.Friendship;
-import com.example.springapp.controller.Person;
+import com.example.springapp.model.Friendship;
+import com.example.springapp.model.Person;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public interface FriendshipService {
 

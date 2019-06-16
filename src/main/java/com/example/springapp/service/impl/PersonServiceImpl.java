@@ -1,13 +1,13 @@
 package com.example.springapp.service.impl;
 
-import com.example.springapp.controller.Person;
-import com.example.springapp.repositories.PersonRepository;
+import com.example.springapp.model.Person;
+import com.example.springapp.repository.PersonRepository;
 import com.example.springapp.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
-public class PersonServiceImpl implements PersonService{
+@Service("personService")
+public class PersonServiceImpl implements PersonService {
 
   @Autowired
   private PersonRepository personRepository;
@@ -20,7 +20,7 @@ public class PersonServiceImpl implements PersonService{
   }
 
   @Override
-  public Optional<Person> getPerson(Long userId) {
-    return personRepository.findById(userId);
+  public Person getPerson(Long userId) {
+    return personRepository.findById(userId).orElseGet(null);
   }
 }
