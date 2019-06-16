@@ -12,6 +12,15 @@ import java.util.Map;
 public interface FriendshipService {
 
   /**
+   * Checks if friendship already exists between two users
+   *
+   * @param userId ID of the first person
+   * @param friendId ID of the second person
+   * @return true if already friends, false if not
+   */
+  boolean isFriend(Long userId, Long friendId);
+
+  /**
    * @param newFriendship Friendship to create
    * @return
    */

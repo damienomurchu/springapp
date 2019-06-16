@@ -37,8 +37,25 @@ public class FriendshipServiceImpl implements FriendshipService {
    */
   @Override
   public Friendship newFriendship(Friendship friendship) {
-    Friendship newFriendship = new Friendship(friendship.getSourceUserId(), friendship.getTargetUserId());
-    return friendshipRepository.save(newFriendship);
+    Long userId = friendship.getSourceUserId();
+    Long friendId = friendship.getTargetUserId();
+
+    // check if friendship already exists
+    boolean isFriend = isFriend(userId, friendId);
+
+    // create Friendship if no pre-existing friendship
+    if (!isFriend) {
+      Friendship newFriendship = new Friendship(userId, friendId);
+      return friendshipRepository.save(newFriendship);
+    }
+
+    // TODO return existing friendship if already a friend instead of null
+    return null;
+  }
+
+  public boolean isFriend(Long userId, Long friendId) {
+    ArrayList<Person> existingFriendIds = getFriends(userId);
+    return existingFriendIds.contains(friendId);
   }
 
   /**
@@ -62,10 +79,16 @@ public class FriendshipServiceImpl implements FriendshipService {
 
     // check list of friendships for your friendships
     for (Friendship friendship : friendships) {
+      // add friendId if you're the source of the friendship
       if (friendship.getSourceUserId() == userId) {
         friendIds.add(friendship.getTargetUserId());
       }
+      // add friendId if you're the target of the friendship
+      if (friendship.getTargetUserId() == userId) {
+        friendIds.add(friendship.getSourceUserId());
+      }
     }
+
     return friendIds;
   }
 

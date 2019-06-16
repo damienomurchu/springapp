@@ -43,6 +43,9 @@ public class FriendshipController {
       return new ResponseEntity(null, null, HttpStatus.NOT_ACCEPTABLE);
     }
 
+    // TODO check that friendship does not exist already before adding a new one
+    boolean isFriend = friendshipService.isFriend(userId, friendId);
+
     Friendship newFriendship = new Friendship(userId, friendId);
     Friendship createdFriend = friendshipService.newFriendship(newFriendship);
     return new ResponseEntity(createdFriend, null, HttpStatus.CREATED);
